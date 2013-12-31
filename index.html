@@ -15,7 +15,7 @@
    while (index >= 0) {
      var tweet = streams.home[index];
      var $tweet = $('<div></div>');
-     $tweet.text(streams.home.indexOf(tweet) + '@' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
+     $tweet.text('@' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
      $tweet.appendTo($body);
      index -= 1;
    }
@@ -32,7 +32,7 @@
          var index = streams.home.length - tweetDiff;
          var tweet = streams.home[index];
          var $tweet = $('<div></div>');
-         $tweet.text(streams.home.indexOf(tweet) + '@' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
+         $tweet.text('@' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
          $tweet.prependTo($body);
          tweetDiff -= 1;
        }
