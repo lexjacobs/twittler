@@ -20,7 +20,15 @@
           index -= 1;
         }
 
-      });
+
+        setInterval (function(){
+          generateRandomTweet();
+          var tweet = streams.home[streams.home.length - 1];
+          var $tweet = $('<div></div>');
+          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.appendTo($body);
+          }, 1000);
+        });
 
     </script>
   </body>
