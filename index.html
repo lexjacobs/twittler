@@ -21,7 +21,7 @@
    }
    var tweetsPrinted = streams.home.length;
 
-   // this checks for new tweets and prints only the new tweets
+   // this section checks for new tweets and prints only the new tweets
    setInterval(function() {
      var totalTweets = streams.home.length; // to check for new tweets
      console.log(totalTweets);
@@ -37,7 +37,7 @@
          tweetDiff -= 1;
        }
      }
-   }, 100);
+   }, 3000);
  });
     </script>
   </body>
