@@ -1,6 +1,9 @@
 body {
-    /* the entire following block is the background pattern */
-    background:
+width: 400px;
+float: right;
+background-color: #f5f5f5;
+/* the entire following block is the background pattern */
+/* background:
 linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
 linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
 linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
@@ -9,17 +12,22 @@ linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
 linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
 background-color: #131313;
 background-size: 20px 20px;
+*/
 }
 
 div {
-background-color: darkred;
-font-size: 18px;
+background-color: rgba(22, 22, 20, 0.09);
+font-size: 14px;
+line-height: 18px;
 margin: 10px;
-font-family: georgia;
-color: #ddd;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+color: #222;
 
-padding: 2px;
+padding: 3px 3px 3px 10px;
 text-align: left;
 width: 350px;
+border-radius: 6px;
+border-width: 2px;
+border-color: black;
 }
 
