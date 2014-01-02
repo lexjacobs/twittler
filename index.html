@@ -15,15 +15,14 @@
       var $body = $('body');
       
       // clears the screen
-      $body.html('');
-      $body.html("<div class= 'divLeft' ></div>")
-      $('div').html('<button class = \'fetch\' >Fetch!</button>');  
-      $("<div class='divRight'></div>").appendTo('body');
+      // $body.html('');
+      $("<div class = 'container'></div>").appendTo('body');
+      $("<div class='divRight'></div>").appendTo('.container');
+      $("<div class = 'divLeft' ></div>").appendTo('.container');
+      $('<button class = \'fetch\' >Fetch!</button>').appendTo('.divLeft');  
 
       
-      
-      
-      
+
       
       // variable that will be used to see how many have come in since last published
       var tweetsPrinted = 0;
@@ -59,7 +58,7 @@
       setInterval(function(){
         console.log(streams.home.length);
         } , 3000);
-      
+
     });
   </script>
 </body>

@@ -19,7 +19,7 @@ p {
 background-color: rgba(22, 22, 20, 0.09);
 font-size: 14px;
 line-height: 18px;
-margin: 10px 0 10px 0;
+margin: 0px 0 10px 0;
 font-family: 'Helvetica Neue', Arial, sans-serif;
 color: #222;
 padding: 3px 3px 3px 10px;
@@ -28,12 +28,24 @@ width: 350px;
 border-radius: 6px;
 }
 
+.container {
+margin-top: 10px;
+position: relative;
+}
+
+
 .divRight {
-margin-left: 35%;
+top: 0;
+right: 0;
+width: 400px;
+position: absolute;
 }
 
 .divLeft {
 /* TODO: figure out how to lower via a margin that doesn't affect the column to the right */
-margin-left: 2%;
+top: 0;
+left: 0;
+width: 200px;
+position: absolute;
 }
 
