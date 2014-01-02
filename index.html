@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE HTML>
 <head>
   <link href="style.css" media="all" rel="stylesheet" type="text/css" />
   <script src="jquery.js"></script>
@@ -12,14 +10,14 @@
     $(document).ready(function () {
       
       // jquery variable
-      var $body = $('body');
+      //var $body = $('body');
       
       // clears the screen
       // $body.html('');
       $("<div class = 'container'></div>").appendTo('body');
       $("<div class='divRight'></div>").appendTo('.container');
       $("<div class = 'divLeft' ></div>").appendTo('.container');
-      $("<p class = 'title'>TWITTLER!</p><br><button class = \'fetch\' >Fetch!</button>").appendTo('.divLeft');  
+      $("<p class = 'title'>twittler main feed</p><button class = 'fetch' >twits up to date</button>").appendTo('.divLeft');  
 
       
 
@@ -27,11 +25,11 @@
       // variable that will be used to see how many have come in since last published
       var tweetsPrinted = 0;
 
-      var tweetChecker = function () {
+      var tweetPrinter = function () {
         var totalTweets = streams.home.length; // to check for new tweets
 
         if (tweetsPrinted !== totalTweets) {
-          tweetDiff = totalTweets - tweetsPrinted;
+          var tweetDiff = totalTweets - tweetsPrinted;
           // tweetsPrinted = totalTweets;
           while (tweetDiff > 0) {
             var index = streams.home.length - tweetDiff;
@@ -39,26 +37,42 @@
             var $tweet = $('<p></p>');
 
             // first text element prepends database tweet number for TESTING only:
-            $tweet.text(streams.home.indexOf(tweet)+1 + ' @' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
+            $tweet.html(streams.home.indexOf(tweet)+1 + ' @' + tweet.user + ' ' + tweet.created_at + '<br>' + tweet.message);
             $tweet.prependTo($('.divRight'));
             tweetDiff -= 1;
           }
         tweetsPrinted = totalTweets;
         }
-      };
 
-      // run tweetChecker initially, then every x milliseconds:
-      tweetChecker();
-      
-      $('button').on('click', tweetChecker);
-      
-      // log number of unread messages. TODO: feed an 'unread message' count
+      // periodic check for new tweets that will update the unread message count:
       setInterval(function(){
         console.log(streams.home.length);
-        } , 1000);
+        var totalTweets = streams.home.length;
+        var buttonDiff = totalTweets - tweetsPrinted;
+        if (buttonDiff > 0) {
+          if (buttonDiff == 1) {
+            $('.fetch').text('fetch ' + buttonDiff + ' new twit');   
+          } else {
+            $('.fetch').text('fetch ' + buttonDiff + ' new twits');
+          }
+        }
+      }, 1000);
 
-    });
-  </script>
+    };
+      // run tweetPrinter initially, then only when clicking the fetch button
+      tweetPrinter();
+
+      // after pressing button, print new tweets and reset button text
+      var tweetPrintReset = function(){
+        tweetPrinter();
+        $('.fetch').text('twits up to date');
+      };
+
+      $('button').on('mousedown', tweetPrintReset);
+
+});
+
+</script>
 </body>
 
 </html>
