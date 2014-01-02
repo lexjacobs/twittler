@@ -16,6 +16,14 @@
       
       // clears the screen
       $body.html('');
+      $body.html("<div class= 'divLeft' ></div>")
+      $('div').html('<button class = \'fetch\' >Fetch!</button>');  
+      $("<div class='divRight'></div>").appendTo('body');
+
+      
+      
+      
+      
       
       // variable that will be used to see how many have come in since last published
       var tweetsPrinted = 0;
@@ -32,11 +40,11 @@
           while (tweetDiff > 0) {
             var index = streams.home.length - tweetDiff;
             var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
+            var $tweet = $('<p></p>');
 
             // first text element prepends database tweet number for TESTING only:
             $tweet.text(streams.home.indexOf(tweet)+1 + ' @' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
-            $tweet.prependTo($body);
+            $tweet.prependTo($('.divRight'));
             tweetDiff -= 1;
           }
         }
