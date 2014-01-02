@@ -28,6 +28,11 @@ border-radius: 6px;
 
 .title {
 width: 100px;
+font-weight: bold;
+}
+
+.feedTitle {
+width: 100px;
 }
 
 .container {
