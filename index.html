@@ -18,7 +18,7 @@
       $("<div class='divRight'></div>").appendTo('.container');
       $("<div class = 'divLeft' ></div>").appendTo('.container');
       $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >twits up to date</button>").appendTo('.divLeft');  
-      
+
       // variable that will be used to see how many have come in since last published
       var tweetsPrinted = 0;
 
@@ -42,6 +42,13 @@
           }
         tweetsPrinted = totalTweets;
         }
+
+      //code block for clicking on username to show users' tweets:
+      $('.userName').on('click', function(){
+        console.log($(this).text());
+      });
+
+
 
       // periodic check for new tweets that will update the unread message count:
       setInterval(function(){
@@ -68,7 +75,6 @@
       };
 
       $('button').on('mousedown', tweetPrintReset);
-
 });
 
 </script>
