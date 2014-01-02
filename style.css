@@ -1,6 +1,4 @@
 body {
-/*width: 400px;*/
-/*float: right;*/
 background-color: #f5f5f5;
 /* the entire following block is the background pattern */
 /* background:
@@ -28,8 +26,11 @@ width: 350px;
 border-radius: 6px;
 }
 
+.title {
+width: 100px;
+}
+
 .container {
-margin-top: 10px;
 position: relative;
 }
 
@@ -44,7 +45,7 @@ position: absolute;
 .divLeft {
 /* TODO: figure out how to lower via a margin that doesn't affect the column to the right */
 top: 0;
-left: 0;
+right: 400px;
 width: 200px;
 position: absolute;
 }

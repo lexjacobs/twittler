@@ -19,7 +19,7 @@
       $("<div class = 'container'></div>").appendTo('body');
       $("<div class='divRight'></div>").appendTo('.container');
       $("<div class = 'divLeft' ></div>").appendTo('.container');
-      $('<button class = \'fetch\' >Fetch!</button>').appendTo('.divLeft');  
+      $("<p class = 'title'>TWITTLER!</p><br><button class = \'fetch\' >Fetch!</button>").appendTo('.divLeft');  
 
       
 
@@ -29,13 +29,10 @@
 
       var tweetChecker = function () {
         var totalTweets = streams.home.length; // to check for new tweets
-        
-        // for TESTING only:
-        console.log(totalTweets);
 
         if (tweetsPrinted !== totalTweets) {
           tweetDiff = totalTweets - tweetsPrinted;
-          tweetsPrinted = totalTweets;
+          // tweetsPrinted = totalTweets;
           while (tweetDiff > 0) {
             var index = streams.home.length - tweetDiff;
             var tweet = streams.home[index];
@@ -46,8 +43,9 @@
             $tweet.prependTo($('.divRight'));
             tweetDiff -= 1;
           }
+        tweetsPrinted = totalTweets;
         }
-      }
+      };
 
       // run tweetChecker initially, then every x milliseconds:
       tweetChecker();
@@ -57,7 +55,7 @@
       // log number of unread messages. TODO: feed an 'unread message' count
       setInterval(function(){
         console.log(streams.home.length);
-        } , 3000);
+        } , 1000);
 
     });
   </script>
