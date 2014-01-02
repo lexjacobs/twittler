@@ -8,7 +8,6 @@
 
 <body>
   <script>
-    // this prints the initial set of tweets:
     $(document).ready(function () {
       var $body = $('body');
       $body.html('');
@@ -32,7 +31,6 @@
         }
       }
 
-      // this section checks for new tweets and prints only the new tweets
       tweetChecker();
       setInterval(tweetChecker, 3000);
     });
