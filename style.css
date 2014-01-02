@@ -58,3 +58,7 @@ position: absolute;
 .userName {
 cursor: pointer;
 }
+
+.userName:hover {
+  text-decoration: underline;
+}
