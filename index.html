@@ -52,7 +52,14 @@
 
       // run tweetChecker initially, then every x milliseconds:
       tweetChecker();
-      setInterval(tweetChecker, 3000);
+      
+      $('button').on('click', tweetChecker);
+      
+      // log number of unread messages. TODO: feed an 'unread message' count
+      setInterval(function(){
+        console.log(streams.home.length);
+        } , 3000);
+      
     });
   </script>
 </body>
