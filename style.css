@@ -1,6 +1,6 @@
 body {
-width: 400px;
-float: right;
+/*width: 400px;*/
+/*float: right;*/
 background-color: #f5f5f5;
 /* the entire following block is the background pattern */
 /* background:
@@ -15,19 +15,32 @@ background-size: 20px 20px;
 */
 }
 
-div {
+.topBar {
+/*clear: both;*/
+}
+
+p {
 background-color: rgba(22, 22, 20, 0.09);
 font-size: 14px;
 line-height: 18px;
-margin: 10px;
+margin: 10px 0 10px 0;
 font-family: 'Helvetica Neue', Arial, sans-serif;
 color: #222;
-
 padding: 3px 3px 3px 10px;
 text-align: left;
 width: 350px;
 border-radius: 6px;
-border-width: 2px;
-border-color: black;
+}
+
+
+
+.divRight {
+margin-left: 35%;
+}
+
+.divLeft {
+/* TODO: figure out how to lower via a margin that doesn't affect the column to the right */
+margin-left: 2%;
+clear: right;
 }
 
