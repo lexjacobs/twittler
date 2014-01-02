@@ -10,14 +10,22 @@
 <body>
   <script>
     $(document).ready(function () {
+      
+      // jquery variable
       var $body = $('body');
+      
+      // clears the screen
       $body.html('');
       
+      // variable that will be used to see how many have come in since last published
       var tweetsPrinted = 0;
 
       var tweetChecker = function () {
         var totalTweets = streams.home.length; // to check for new tweets
+        
+        // for TESTING only:
         console.log(totalTweets);
+
         if (tweetsPrinted !== totalTweets) {
           tweetDiff = totalTweets - tweetsPrinted;
           tweetsPrinted = totalTweets;
@@ -25,13 +33,16 @@
             var index = streams.home.length - tweetDiff;
             var tweet = streams.home[index];
             var $tweet = $('<div></div>');
-            $tweet.text(streams.home.indexOf(tweet) + '@' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
+
+            // first text element prepends database tweet number for TESTING only:
+            $tweet.text(streams.home.indexOf(tweet)+1 + ' @' + tweet.user + ': ' + tweet.message + " at: " + tweet.created_at);
             $tweet.prependTo($body);
             tweetDiff -= 1;
           }
         }
       }
 
+      // run tweetChecker initially, then every x milliseconds:
       tweetChecker();
       setInterval(tweetChecker, 3000);
     });
