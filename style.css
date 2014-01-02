@@ -55,3 +55,6 @@ width: 200px;
 position: absolute;
 }
 
+.userName {
+cursor: pointer;
+}

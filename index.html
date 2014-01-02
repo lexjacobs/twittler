@@ -19,26 +19,24 @@
       $("<div class = 'divLeft' ></div>").appendTo('.container');
       $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >twits up to date</button>").appendTo('.divLeft');  
       
-
-      
-
-      
       // variable that will be used to see how many have come in since last published
       var tweetsPrinted = 0;
 
       var tweetPrinter = function () {
-        var totalTweets = streams.home.length; // to check for new tweets
-
+      
+        // if no new tweets, will not try to add anything to the screen.
+        var totalTweets = streams.home.length;
         if (tweetsPrinted !== totalTweets) {
           var tweetDiff = totalTweets - tweetsPrinted;
-          // tweetsPrinted = totalTweets;
+        
           while (tweetDiff > 0) {
             var index = streams.home.length - tweetDiff;
             var tweet = streams.home[index];
             var $tweet = $('<p></p>');
 
             // first text element prepends database tweet number for TESTING only:
-            $tweet.html(streams.home.indexOf(tweet)+1 + ' @' + tweet.user + ' ' + tweet.created_at + '<br>' + tweet.message);
+            // TODO: remove tweet element number before launch
+            $tweet.html(streams.home.indexOf(tweet)+1 + ' @' + '<span class = "userName">'+tweet.user+'</span>' + ' ' + tweet.created_at + '<br>' + tweet.message);
             $tweet.prependTo($('.divRight'));
             tweetDiff -= 1;
           }
