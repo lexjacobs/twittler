@@ -50,8 +50,8 @@ position: absolute;
 .divLeft {
 /* TODO: figure out how to lower via a margin that doesn't affect the column to the right */
 top: 0;
-right: 450px;
-width: 200px;
+right: 500px;
+width: 150px;
 position: absolute;
 }
 
