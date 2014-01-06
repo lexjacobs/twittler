@@ -8,74 +8,37 @@
 <body>
   <script>
     $(document).ready(function () {
-      
-      // jquery variable
-      //var $body = $('body');
-      
-      // clears the screen
-      // $body.html('');
+
       $("<div class = 'container'></div>").appendTo('body');
       $("<div class='divRight'></div>").appendTo('.container');
       $("<div class = 'divLeft' ></div>").appendTo('.container');
-      $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >twits up to date</button>").appendTo('.divLeft');  
+      $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >fetch new twits</button>").appendTo('.divLeft');  
 
-      // variable that will be used to see how many have come in since last published
-      var tweetsPrinted = 0;
- 
-      var tweetPrinter = function () {
-      
-        // if no new tweets, will not try to add anything to the screen.
-        var totalTweets = streams.home.length;
-        if (tweetsPrinted !== totalTweets) {
-          var tweetDiff = totalTweets - tweetsPrinted;
-        
-          while (tweetDiff > 0) {
-            var index = streams.home.length - tweetDiff;
-            var tweet = streams.home[index];
+      var mainFeedTweetPrinter = function () {
+        $('.divRight').find('p').remove();      
+            for (var i = 0; i < streams.home.length; i++) {
+            var tweet = streams.home[i];
             var $tweet = $('<p></p>');
 
             // first text element prepends database tweet number for TESTING only:
             // TODO: remove tweet element number before launch
             $tweet.html(streams.home.indexOf(tweet)+1 + ' @' + '<span class = "userName">'+tweet.user+'</span>' + ' ' + tweet.created_at + '<br>' + tweet.message);
             $tweet.prependTo($('.divRight'));
-            tweetDiff -= 1;
           }
-        tweetsPrinted = totalTweets;
-        }
+        };
+          
 
       //code block for clicking on username to show users' tweets:
       $('.userName').on('click', function(){
         console.log($(this).text());
       });
 
+      mainFeedTweetPrinter();
+      $('button').on('mousedown', mainFeedTweetPrinter);
 
-
-      // periodic check for new tweets that will update the unread message count:
-      setInterval(function(){
-        console.log(streams.home.length);
-        var totalTweets = streams.home.length;
-        var buttonDiff = totalTweets - tweetsPrinted;
-        if (buttonDiff > 0) {
-          if (buttonDiff == 1) {
-            $('.fetch').text('fetch ' + buttonDiff + ' new twit');   
-          } else {
-            $('.fetch').text('fetch ' + buttonDiff + ' new twits');
-          }
-        }
-      }, 1000);
-
-    };
-      // run tweetPrinter initially, then only when clicking the fetch button
-      tweetPrinter();
-
-      // after pressing button, print new tweets and reset button text
-      var tweetPrintReset = function(){
-        tweetPrinter();
-        $('.fetch').text('twits up to date');
-      };
-
-      $('button').on('mousedown', tweetPrintReset);
-});
+    });
+      
+      
 
 </script>
 </body>
