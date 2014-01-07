@@ -9,11 +9,13 @@
   <script>
 $(document).ready(function () {
 
+  // layout the html structure of the page as a simple 2 column design:
   $("<div class = 'container'></div>").appendTo('body');
   $("<div class='divRight'></div>").appendTo('.container');
   $("<div class = 'divLeft' ></div>").appendTo('.container');
   $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >fetch new twits</button>").appendTo('.divLeft');
 
+  // print all the tweets from streams.home in the right column and update the feed title as 'main feed'.
   var mainFeedTwitPrinter = function () {
     $('.feedTitle').text('main feed');
     $('.divRight').find('p').remove();
@@ -21,15 +23,14 @@ $(document).ready(function () {
       var tweet = streams.home[i];
       var $tweet = $('<p></p>');
 
-      // first text element prepends database tweet number for TESTING only:
       // TODO: remove tweet element number before launch
-
-      // TODO: change the s.h.indexOf to just 'i'
       $tweet.html(i + 1 + ' @' + '<span class = "userName">' + tweet.user + '</span>' + ' ' + tweet.created_at + '<br>' + tweet.message);
       $tweet.prependTo($('.divRight'));
     }
   };
 
+  // print all the tweets from the specified user in the right column
+  // and update the feed title with the selected username.
   var specificUserTwitPrinter = function (user) {
     $('.divRight').find('p').remove();
     for (var i = 0; i < streams.users[user].length; i++) {
@@ -40,12 +41,16 @@ $(document).ready(function () {
     }
   };
 
+  // upon page load, start by printing everything from streams.home
   mainFeedTwitPrinter();
 
+  // upon clicking the fetch button, print all tweets
   $('.fetch').on('click', function () {
     console.log("clicked fetch button");
     mainFeedTwitPrinter();
   });
+
+  // upon clicking the twittler button, print all tweets
   $('.title').on('click', function () {
     console.log("clicked title button");
     mainFeedTwitPrinter();
