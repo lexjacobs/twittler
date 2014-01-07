@@ -7,39 +7,62 @@
 
 <body>
   <script>
-    $(document).ready(function () {
+$(document).ready(function () {
 
-      $("<div class = 'container'></div>").appendTo('body');
-      $("<div class='divRight'></div>").appendTo('.container');
-      $("<div class = 'divLeft' ></div>").appendTo('.container');
-      $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >fetch new twits</button>").appendTo('.divLeft');  
+  $("<div class = 'container'></div>").appendTo('body');
+  $("<div class='divRight'></div>").appendTo('.container');
+  $("<div class = 'divLeft' ></div>").appendTo('.container');
+  $("<p class = 'title'>twittler</p><p class = 'feedTitle'>main feed</p><button class = 'fetch' >fetch new twits</button>").appendTo('.divLeft');
 
-      var mainFeedTweetPrinter = function () {
-        $('.divRight').find('p').remove();      
-            for (var i = 0; i < streams.home.length; i++) {
-            var tweet = streams.home[i];
-            var $tweet = $('<p></p>');
+  var mainFeedTwitPrinter = function () {
+    $('.feedTitle').text('main feed');
+    $('.divRight').find('p').remove();
+    for (var i = 0; i < streams.home.length; i++) {
+      var tweet = streams.home[i];
+      var $tweet = $('<p></p>');
 
-            // first text element prepends database tweet number for TESTING only:
-            // TODO: remove tweet element number before launch
-            $tweet.html(streams.home.indexOf(tweet)+1 + ' @' + '<span class = "userName">'+tweet.user+'</span>' + ' ' + tweet.created_at + '<br>' + tweet.message);
-            $tweet.prependTo($('.divRight'));
-          }
-        };
-          
+      // first text element prepends database tweet number for TESTING only:
+      // TODO: remove tweet element number before launch
 
-      //code block for clicking on username to show users' tweets:
-      $('.userName').on('click', function(){
-        console.log($(this).text());
-      });
+      // TODO: change the s.h.indexOf to just 'i'
+      $tweet.html(i + 1 + ' @' + '<span class = "userName">' + tweet.user + '</span>' + ' ' + tweet.created_at + '<br>' + tweet.message);
+      $tweet.prependTo($('.divRight'));
+    }
+  };
 
-      mainFeedTweetPrinter();
-      $('button').on('mousedown', mainFeedTweetPrinter);
+  var specificUserTwitPrinter = function (user) {
+    $('.divRight').find('p').remove();
+    for (var i = 0; i < streams.users[user].length; i++) {
+      var tweet = streams.users[user][i];
+      var $tweet = $('<p></p>');
+      $tweet.html(i + 1 + ' @' + user + ' ' + tweet.created_at + '<br>' + tweet.message);
+      $tweet.prependTo($('.divRight'));
+    }
+  };
 
-    });
-      
-      
+  mainFeedTwitPrinter();
 
+  $('.fetch').on('click', function () {
+    console.log("clicked fetch button");
+    mainFeedTwitPrinter();
+  });
+  $('.title').on('click', function () {
+    console.log("clicked title button");
+    mainFeedTwitPrinter();
+  });
+
+  //code block for clicking on username to show users' tweets:
+  $('.divRight').on('click', '.userName', function () {
+    console.log("clicked username");
+    var user = $(this).text();
+    $('.feedTitle').text(user);
+    console.log("event listener: " + user);
+    specificUserTwitPrinter(user);
+  });
+
+
+
+});
 </script>
 </body>
 

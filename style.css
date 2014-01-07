@@ -17,7 +17,7 @@ p {
 background-color: rgba(22, 22, 20, 0.09);
 font-size: 14px;
 line-height: 18px;
-margin: 0px 0 10px 0;
+margin: 0 0 10px 0;
 font-family: 'Helvetica Neue', Arial, sans-serif;
 color: #222;
 padding: 3px 3px 3px 10px;
@@ -27,12 +27,12 @@ border-radius: 6px;
 }
 
 .title {
-width: 100px;
+width: 110px;
 font-weight: bold;
 }
 
 .feedTitle {
-width: 100px;
+width: 110px;
 }
 
 .container {
@@ -51,11 +51,12 @@ position: absolute;
 /* TODO: figure out how to lower via a margin that doesn't affect the column to the right */
 top: 0;
 right: 500px;
-width: 150px;
+width: 160px;
+margin-right: 10px;
 position: absolute;
 }
 
-.userName {
+.userName, .title, .fetch {
 cursor: pointer;
 }
 
